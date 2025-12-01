@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Cricket Team Survey</title>
+  <style>
+    /* General Reset */
+    body, h1, label, select, button {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212; /* Dark background */
+      color: #ffffff; /* White text */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* Container Styling */
+    .container {
+      background-color: #1e1e1e; /* Slightly lighter dark background */
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: centre;
+      color: #00bcd4; /* Highlight colour */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333333; /* Dark dropdown background */
+      color: #ffffff; /* White text */
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #00bcd4; /* Highlight colour */
+      colour: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #008c9e; /* Darker highlight on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ultimate Cricket Team Survey</h1>
+    <form id="cricketSurvey">
+      <!-- Batsmen -->
+      <label for="batsman1">1. Select your Favourite Opening Batsman:</label>
+      <select id="batsman1" name="batsman1">
+        <option value="sachin">Sachin Tendulkar</option>
+        <option value="gavaskar">Sunil Gavaskar</option>
+        <option value="hayden">Matthew Hayden</option>
+      </select>
+
+      <label for="batsman2">2. Select your Favourite Second Batsman:</label>
+      <select id="batsman2" name="batsman2">
+        <option value="lara">Brian Lara</option>
+        <option value="ponting">Ricky Ponting</option>
+        <option value="kohli">Virat Kohli</option>
+      </select>
+
+      <label for="batsman3">3. Select your Favourite Number 3 Batsman:</label>
+      <select id="batsman3" name="batsman3">
+        <option value="dravid">Rahul Dravid</option>
+        <option value="sangakkara">Kumar Sangakkara</option>
+        <option value="smith">Steve Smith</option>
+      </select>
+
+      <label for="batsman4">4. Select your Favourite Number 4 Batsman:</label>
+      <select id="batsman4" name="batsman4">
+        <option value="kallis">Jacques Kallis</option>
+        <option value="de_villiers">AB de Villiers</option>
+        <option value="root">Joe Root</option>
+      </select>
+
+      <label for="batsman5">5. Select your Favourite Number 5 Batsman:</label>
+      <select id="batsman5" name="batsman5">
+        <option value="border">Allan Border</option>
+        <option value="chappell">Greg Chappell</option>
+        <option value="miandad">Javed Miandad</option>
+      </select>
+
+      <!-- Wicketkeeper -->
+      <label for="wicketkeeper">6. Select your Favourite Wicketkeeper:</label>
+      <select id="wicketkeeper" name="wicketkeeper">
+        <option value="gilchrist">Adam Gilchrist</option>
+        <option value="dhoni">MS Dhoni</option>
+        <option value="flower">Andy Flower</option>
+      </select>
+
+      <!-- All-rounders -->
+      <label for="allrounder">7. Select your Favourite All-Rounder:</label>
+      <select id="allrounder" name="allrounder">
+        <option value="sobers">Sir Garfield Sobers</option>
+        <option value="botham">Ian Botham</option>
+        <option value="kapil">Kapil Dev</option>
+      </select>
+
+      <!-- Bowlers -->
+      <label for="bowler1">8. Select your Favourite Bowler:</label>
+      <select id="bowler1" name="bowler1">
+        <option value="warne">Shane Warne</option>
+        <option value="murali">Muttiah Muralitharan</option>
+        <option value="mcgrath">Glenn McGrath</option>
+      </select>
+
+      <label for="bowler2">9. Select your Favourite Second Bowler:</label>
+      <select id="bowler2" name="bowler2">
+        <option value="akram">Wasim Akram</option>
+        <option value="lee">Brett Lee</option>
+        <option value="steyn">Dale Steyn</option>
+      </select>
+
+      <label for="bowler3">10. Select your Favourite Third Bowler:</label>
+      <select id="bowler3" name="bowler3">
+        <option value="anderson">James Anderson</option>
+        <option value="ambrose">Curtly Ambrose</option>
+        <option value="walsh">Courtney Walsh</option>
+      </select>
+
+      <label for="bowler4">11. Select your Favourite Fourth Bowler:</label>
+      <select id="bowler4" name="bowler4">
+        <option value="starc">Mitchell Starc</option>
+        <option value="cummins">Pat Cummins</option>
+        <option value="holding">Michael Holding</option>
+      </select>
+
+      <!-- Submit Button -->
+      <button type="submit">Submit Your Team</button>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript to handle form submission
+    document.getElementById('cricketSurvey').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from refreshing the page
+
+      // Collect selected players
+      const formData = new FormData(event.target);
+      const team = {};
+      formData.forEach((value, key) => {
+        team[key] = value;
+      });
+
+      // Display the selected team (you can customise this further)
+      let teamList = "Your Ultimate Cricket Team:\n";
+      for (const [position, player] of Object.entries(team)) {
+        teamList += `,[object Object],{player}\n`;
+      }
+      alert(teamList);
+    });
+  </script>
+</body>
+</html>
+
+<!-- html code generated by Corella
